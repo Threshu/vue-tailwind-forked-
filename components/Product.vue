@@ -4,29 +4,29 @@
       <div class="product-thumbnail-list"></div>
     </div>
     <div class="product-details">
-      <h1 class="product-name">{{ productName }}</h1>
+      <h1 class="product-name">{{ data.productName }}</h1>
       <div class="product-rating">
-        <span class="star" v-for="rating in productRatings" :key="rating">
+        <span class="star" v-for="rating in data.productRatings" :key="rating">
           <i class="fas fa-star"></i>
         </span>
-        <span class="product-review-count">{{ reviewCount }} Reviews</span>
+        <span class="product-review-count">{{ data.reviewCount }} Reviews</span>
       </div>
       <button class="inline-block rounded bg-gray-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-gray-600"
               data-bs-toggle="collapse" :data-bs-target="'#desc-' + data.id">
         Toggle description
       </button>
       <div class="collapse" :id="'desc-' + data.id">
-        <p>{{ productDescription }}</p>
+        <p>{{ data.productDescription }}</p>
       </div>
       <div class="product-price">
-        <span class="price">{{ productPrice }}</span>
-        <span class="discount">{{ productDiscount }}</span>
+        <span class="price">{{ data.productPrice }}</span>
+        <span class="discount">{{ data.productDiscount }}</span>
       </div>
       <div class="product-options">
         <div class="option-color">
           <span class="option-title">Color:</span>
           <ul>
-            <li v-for="(color, index) in productColors" :key="index">
+            <li v-for="(color, index) in data.productColors" :key="index">
               <a
                 :style="{ backgroundColor: color }"
                 @click="selectColor(index)"
@@ -37,7 +37,7 @@
         <div class="option-size">
           <span class="option-title">Size:</span>
           <ul>
-            <li v-for="(size, index) in productSizes" :key="index">
+            <li v-for="(size, index) in data.productSizes" :key="index">
               <a @click="selectSize(index)">{{ size }}</a>
             </li>
           </ul>
@@ -63,15 +63,6 @@ export default {
   },
   data() {
     return {
-      productName: "Example Product",
-      productDescription: "This is an example product description.",
-      productPrice: "$19.99",
-      productDiscount: "50% off",
-      productColors: ["#FF0000", "#00FF00", "#0000FF"],
-      productSizes: ["S", "M", "L", "XL"],
-      productRatings: [1, 2, 3, 4, 5],
-      reviewCount: 10,
-      selectedImageIndex: 0,
       selectedColorIndex: 0,
       selectedSizeIndex: 0,
       selectedQuantity: 1,
